@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>jQuery webTicker - Jonathan Mifsud</title>
+
+<meta name="description" content=" ">
+<meta name="keywords" content=" ">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+<script type="text/javascript" src="../jquery.webticker.js"></script>
+
+
+<link rel="stylesheet" href="assets/webticker.css" type="text/css" media="screen"> 
+<script type="text/javascript">
+$(function(){
+	$("#webticker").webTicker();
+	
+	$("#stop").click(function(){
+		$("#webticker").webTicker('stop');
+	});
+	
+	$("#continue").click(function(){
+		$("#webticker").webTicker('cont');
+	});
+});
+</script>
+
+
+
+<link rel="stylesheet" type="text/css" href="./jQuery liScroll - a jQuery News Ticker_files/jquery.syntax.core.css"><link rel="stylesheet" type="text/css" href="./jQuery liScroll - a jQuery News Ticker_files/jquery.syntax.brush.html.css"><link rel="stylesheet" type="text/css" href="./jQuery liScroll - a jQuery News Ticker_files/jquery.syntax.brush.css.css"><link rel="stylesheet" type="text/css" href="./jQuery liScroll - a jQuery News Ticker_files/jquery.syntax.layout.list.css"></head>
+<body>
+
+<!-- first ticker -->
+<ul id="webticker" class="newsticker">	
+					<li >
+						My First News Item
+					</li>
+					<li >
+						My Second News Item
+					</li>
+					<li >
+						My Third News Item
+					</li>
+					<li >
+						My Fourth News Item
+					</li>
+					<li >
+						My Fifth News Item
+					</li>
+					<li >
+						My Sixth News Item
+					</li>
+					<li >
+						My Seventh News Item
+					</li>
+					<li >
+						My Eighth News Item
+					</li>
+					<li >
+						My Ninth News Item
+					</li>
+					<li >
+						My Tenth News Item
+					</li>
+</ul>
+
+<button id='stop'>Stop</button>
+<button id='continue'>Continue</button>
+
+</div>
+
+</body></html>
