@@ -42,7 +42,7 @@ overflow: hidden;
 }
 ul.newsticker { /* that's your list */
 position: relative;
-/*left: 750px;*/
+margin-left: 20px;
 font: bold 10px Verdana;
 list-style-type: none;
 margin: 0;
