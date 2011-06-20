@@ -12,6 +12,7 @@
 <script type="text/javascript">
 $(function(){
 	$("#webticker").webTicker();
+	$("#webticker2").webTicker({travelocity: 0.2});
 	
 	$("#stop").click(function(){
 		$("#webticker").webTicker('stop');
@@ -26,10 +27,10 @@ $(function(){
 
 
 <link rel="stylesheet" type="text/css" href="./jQuery liScroll - a jQuery News Ticker_files/jquery.syntax.core.css"><link rel="stylesheet" type="text/css" href="./jQuery liScroll - a jQuery News Ticker_files/jquery.syntax.brush.html.css"><link rel="stylesheet" type="text/css" href="./jQuery liScroll - a jQuery News Ticker_files/jquery.syntax.brush.css.css"><link rel="stylesheet" type="text/css" href="./jQuery liScroll - a jQuery News Ticker_files/jquery.syntax.layout.list.css"></head>
-<body>
+<body style='margin-left:100px'>
 
 <!-- first ticker -->
-<ul id="webticker" class="newsticker">	
+<ul id="webticker" >	
 					<li >
 						My First News Item
 					</li>
@@ -62,8 +63,41 @@ $(function(){
 					</li>
 </ul>
 
-<button id='stop'>Stop</button>
-<button id='continue'>Continue</button>
+<ul id="webticker2">	
+					<li >
+						My First News Item
+					</li>
+					<li >
+						My Second News Item
+					</li>
+					<li >
+						My Third News Item
+					</li>
+					<li >
+						My Fourth News Item
+					</li>
+					<li >
+						My Fifth News Item
+					</li>
+					<li >
+						My Sixth News Item
+					</li>
+					<li >
+						My Seventh News Item
+					</li>
+					<li >
+						My Eighth News Item
+					</li>
+					<li >
+						My Ninth News Item
+					</li>
+					<li >
+						My Tenth News Item
+					</li>
+</ul>
+
+<button id='stop'>Stop First Ticker</button>
+<button id='continue'>Continue First Ticker</button>
 
 </div>
 

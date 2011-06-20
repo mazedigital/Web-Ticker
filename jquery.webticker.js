@@ -1,9 +1,9 @@
 /*!
- * webTicker 1.1
+ * webTicker 1.2
  * Examples and documentation at: 
  * http://jonmifsud.com
  * 2011 Jonathan Mifsud
- * Version: 1.1.0 (19-JUNE-2011)
+ * Version: 1.2 (29-JUNE-2011)
  * Dual licensed under the MIT and GPL licenses:
  * http://www.opensource.org/licenses/mit-license.php
  * http://www.gnu.org/licenses/gpl.html
@@ -13,7 +13,7 @@
  */
 (function( $ ){
 
-  var globalSettings;
+  var globalSettings = new Array();
   var moving;
 
   var methods = {
@@ -21,7 +21,7 @@
 		settings = jQuery.extend({
 			travelocity: 0.05
 		}, settings);
-		globalSettings = settings;
+		globalSettings[jQuery(this).attr('id')] = settings;
 		moving = true;
 		return this.each(function(){
 				var $strip = jQuery(this);
@@ -43,7 +43,8 @@
 						var tmpleft = $strip.css("left");
 						var outWidth = $strip.children().last().outerWidth(true);
 						var left = parseInt(tmpleft.replace('px','')) + outWidth;
-						$strip.css("left", left);
+						//$strip.css("left", left);
+						$strip.css("left", '0');
 						scrollnews(width, defTiming);
 					});
 				}
@@ -60,7 +61,7 @@
 						var offset = jQuery(this).offset();
 						var first = $strip.children().first();
 						var width = first.outerWidth(true);
-						var residualSpace = offset.left + width;
+						var residualSpace = parseInt(jQuery(this).css('left').replace('px',''))+ width;
 						var residualTime = residualSpace/settings.travelocity;
 						scrollnews(residualSpace, residualTime);
 					}
@@ -78,7 +79,7 @@
     cont : function( ) { // GOOD 	
 		if (!(moving)){
 			moving = true;
-			var settings = globalSettings;
+			var settings = globalSettings[jQuery(this).attr('id')];
 			return this.each(function(){
 				var $strip = jQuery(this);
 					function scrollnews(spazio, tempo){
@@ -90,14 +91,15 @@
 							var tmpleft = $strip.css("left");
 							var outWidth = $strip.children().last().outerWidth(true);
 							var left = parseInt(tmpleft.replace('px','')) + outWidth;
-							$strip.css("left", left);
+							//$strip.css("left", left);
+							$strip.css("left", '0');
 							scrollnews(width, defTiming);
 						});
 					}
 						var offset = jQuery(this).offset();
 						var first = $strip.children().first();
 						var width = first.outerWidth(true);
-						var residualSpace = offset.left + width;
+						var residualSpace = parseInt(jQuery(this).css('left').replace('px','')) + width;
 						var residualTime = residualSpace/settings.travelocity;
 						scrollnews(residualSpace, residualTime);	
 							
