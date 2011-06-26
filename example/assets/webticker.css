@@ -65,3 +65,14 @@ margin: 0 50px 0 0;
 ul.newsticker span {
 margin: 0 10px 0 0;
 } 
+
+#webticker2{
+	float:right;
+}
+
+#webticker2 li {
+float: right; /* important: display inline gives incorrect results when you check for elem's width */
+margin: 0;
+padding-left: 15px;
+/*background: #fff;*/
+}

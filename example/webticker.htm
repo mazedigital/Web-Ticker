@@ -12,7 +12,7 @@
 <script type="text/javascript">
 $(function(){
 	$("#webticker").webTicker();
-	$("#webticker2").webTicker({travelocity: 0.2});
+	$("#webticker2").webTicker({travelocity: 0.2, direction: -1});
 	
 	$("#stop").click(function(){
 		$("#webticker").webTicker('stop');
@@ -21,6 +21,14 @@ $(function(){
 	$("#continue").click(function(){
 		$("#webticker").webTicker('cont');
 	});
+	
+	$("#stop2").click(function(){
+		$("#webticker2").webTicker('stop');
+	});
+	
+	$("#continue2").click(function(){
+		$("#webticker2").webTicker('cont');
+	});
 });
 </script>
 
@@ -28,7 +36,7 @@ $(function(){
 
 <link rel="stylesheet" type="text/css" href="./jQuery liScroll - a jQuery News Ticker_files/jquery.syntax.core.css"><link rel="stylesheet" type="text/css" href="./jQuery liScroll - a jQuery News Ticker_files/jquery.syntax.brush.html.css"><link rel="stylesheet" type="text/css" href="./jQuery liScroll - a jQuery News Ticker_files/jquery.syntax.brush.css.css"><link rel="stylesheet" type="text/css" href="./jQuery liScroll - a jQuery News Ticker_files/jquery.syntax.layout.list.css"></head>
 <body style='margin-left:100px'>
-
+<h1>jQuery - webTicker v1.3 example</h1>
 <!-- first ticker -->
 <ul id="webticker" >	
 					<li >
@@ -98,6 +106,8 @@ $(function(){
 
 <button id='stop'>Stop First Ticker</button>
 <button id='continue'>Continue First Ticker</button>
+<button id='stop2'>Stop Second Ticker</button>
+<button id='continue2'>Continue Second Ticker</button>
 
 </div>
 

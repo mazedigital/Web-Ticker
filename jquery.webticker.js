@@ -1,9 +1,9 @@
 /*!
- * webTicker 1.2
+ * webTicker 1.3
  * Examples and documentation at: 
  * http://jonmifsud.com
  * 2011 Jonathan Mifsud
- * Version: 1.2 (29-JUNE-2011)
+ * Version: 1.2 (26-JUNE-2011)
  * Dual licensed under the MIT and GPL licenses:
  * http://www.opensource.org/licenses/mit-license.php
  * http://www.gnu.org/licenses/gpl.html
@@ -14,15 +14,15 @@
 (function( $ ){
 
   var globalSettings = new Array();
-  var moving;
 
   var methods = {
     init : function( settings ) { // THIS 
 		settings = jQuery.extend({
-			travelocity: 0.05
+			travelocity: 0.05,
+			direction: 1,
+			moving: true
 		}, settings);
 		globalSettings[jQuery(this).attr('id')] = settings;
-		moving = true;
 		return this.each(function(){
 				var $strip = jQuery(this);
 				$strip.addClass("newsticker")
@@ -35,18 +35,26 @@
 				});
 				$strip.width(stripWidth+200);//20 used for ie9 fix					
 				function scrollnews(spazio, tempo){
-					$strip.animate({left: '-='+ spazio}, tempo, "linear", function(){
-						$strip.children().last().after($strip.children().first());
-						var first = $strip.children().first();
-						var width = first.outerWidth(true);
-						var defTiming = width/settings.travelocity;
-						var tmpleft = $strip.css("left");
-						var outWidth = $strip.children().last().outerWidth(true);
-						var left = parseInt(tmpleft.replace('px','')) + outWidth;
+					if (settings.direction == 1)
+						$strip.animate({left: '-='+ spazio}, tempo, "linear", function(){
+							$strip.children().last().after($strip.children().first());
+							var first = $strip.children().first();
+							var width = first.outerWidth(true);
+							var defTiming = width/settings.travelocity;
 						//$strip.css("left", left);
-						$strip.css("left", '0');
-						scrollnews(width, defTiming);
-					});
+							$strip.css("left", '0');
+							scrollnews(width, defTiming);
+						});
+					else
+						$strip.animate({right: '-='+ spazio}, tempo, "linear", function(){
+							$strip.children().last().after($strip.children().first());
+							var first = $strip.children().first();
+							var width = first.outerWidth(true);
+							var defTiming = width/settings.travelocity;
+							//$strip.css("left", left);
+							$strip.css("right", '0');
+							scrollnews(width, defTiming);
+						});
 				}
 				
 				var first = $strip.children().first();
@@ -57,51 +65,64 @@
 					jQuery(this).stop();
 				},
 				function(){
-					if (moving){
+					if (globalSettings[jQuery(this).attr('id')].moving){
 						var offset = jQuery(this).offset();
 						var first = $strip.children().first();
 						var width = first.outerWidth(true);
-						var residualSpace = parseInt(jQuery(this).css('left').replace('px',''))+ width;
+						var residualSpace;
+						if (settings.direction == 1) residualSpace = parseInt(jQuery(this).css('left').replace('px',''))+ width;
+						else residualSpace = parseInt(jQuery(this).css('right').replace('px',''))+ width;
 						var residualTime = residualSpace/settings.travelocity;
-						scrollnews(residualSpace, residualTime);
+						scrollnews(residualSpace, residualTime);						
 					}
 				});			
 		});
 	},
     stop : function( ) { 
-		if (moving){
-			moving = false;
+		if (globalSettings[jQuery(this).attr('id')].moving){
+			globalSettings[jQuery(this).attr('id')].moving = false;
 			return this.each(function(){
 				jQuery(this).stop();
 			});
 		}
 	},
     cont : function( ) { // GOOD 	
-		if (!(moving)){
-			moving = true;
+		if (!(globalSettings[jQuery(this).attr('id')].moving)){
+			globalSettings[jQuery(this).attr('id')].moving = true;
 			var settings = globalSettings[jQuery(this).attr('id')];
 			return this.each(function(){
 				var $strip = jQuery(this);
 					function scrollnews(spazio, tempo){
-						$strip.animate({left: '-='+ spazio}, tempo, "linear", function(){
-							$strip.children().last().after($strip.children().first());
-							var first = $strip.children().first();
-							var width = first.outerWidth(true);
-							var defTiming = width/settings.travelocity;
-							var tmpleft = $strip.css("left");
-							var outWidth = $strip.children().last().outerWidth(true);
-							var left = parseInt(tmpleft.replace('px','')) + outWidth;
-							//$strip.css("left", left);
-							$strip.css("left", '0');
-							scrollnews(width, defTiming);
-						});
+							if (settings.direction == 1)
+								$strip.animate({left: '-='+ spazio}, tempo, "linear", function(){
+									$strip.children().last().after($strip.children().first());
+									var first = $strip.children().first();
+									var width = first.outerWidth(true);
+									var defTiming = width/settings.travelocity;
+								//$strip.css("left", left);
+									$strip.css("left", '0');
+									scrollnews(width, defTiming);
+								});
+							else
+								$strip.animate({right: '-='+ spazio}, tempo, "linear", function(){
+									$strip.children().last().after($strip.children().first());
+									var first = $strip.children().first();
+									var width = first.outerWidth(true);
+									var defTiming = width/settings.travelocity;
+									//$strip.css("left", left);
+									$strip.css("right", '0');
+									scrollnews(width, defTiming);
+								});
+						
 					}
 						var offset = jQuery(this).offset();
 						var first = $strip.children().first();
 						var width = first.outerWidth(true);
-						var residualSpace = parseInt(jQuery(this).css('left').replace('px','')) + width;
+						var residualSpace;
+						if (settings.direction == 1) residualSpace = parseInt(jQuery(this).css('left').replace('px',''))+ width;
+						else residualSpace = parseInt(jQuery(this).css('right').replace('px',''))+ width;
 						var residualTime = residualSpace/settings.travelocity;
-						scrollnews(residualSpace, residualTime);	
+						scrollnews(residualSpace, residualTime);
 							
 			});	
 		}
