@@ -1,0 +1,43 @@
+{
+    "name": "webticker",
+    "title": "jQuery WebTicker",
+    "description": "jQuery plugin to create horizontal scrolling tickers, supports both left and right scrolling as well as variable speeds. Pauses on hyperling hover and many other features.",
+    "keywords": [
+        "ticker",
+        "marquee",
+        "scroll",
+        "link-list",
+        "news-ticker",
+        "animation"
+    ],
+    "version": "1.3.0",
+    "author": {
+        "name": "Jonathan Mifsud",
+        "email": "info@jonmifsud.com",
+        "url": "http://jonmifsud.com"
+    },
+    "maintainers": [
+        {
+            "name": "Jonathan Mifsud",
+            "email": "info@jonmifsud.com",
+            "url": "http://jonmifsud.com"
+        }
+    ],
+    "licenses": [
+        {
+            "type": "Creative Commons Attribution-NonCommercial 3.0 Unported License",
+            "url": "http://creativecommons.org/licenses/by-nc/3.0/"
+        },
+        {
+            "type": "DonationWare",
+            "url": "https://github.com/jonmifsud/Web-Ticker/blob/master/licence.md"
+        }
+    ],
+    "bugs": "https://github.com/jonmifsud/Web-Ticker/issues",
+    "homepage": "http://jonmifsud.com/open-source/jquery/jquery-webticker/",
+    "docs": "http://jonmifsud.com/open-source/jquery/jquery-webticker/",
+    "download": "http://jonmifsud.com/open-source/jquery/jquery-webticker/",
+    "dependencies": {
+        "jquery": ">=1.4.2"
+    }
+}
