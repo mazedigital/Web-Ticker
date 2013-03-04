@@ -12,7 +12,7 @@
 <script type="text/javascript">
 $(function(){
 	$("#webticker").webTicker();
-	$("#webticker2").webTicker({travelocity: 0.2, direction: -1});
+	$("#webticker2").webTicker({travelocity: 0.2, direction: 'right', rssurl:'http://yourwebsite.com/rss/', rssfrequency:1});	
 	
 	$("#stop").click(function(){
 		$("#webticker").webTicker('stop');
@@ -21,7 +21,11 @@ $(function(){
 	$("#continue").click(function(){
 		$("#webticker").webTicker('cont');
 	});
-	
+
+	$("#update").click(function(){
+		$("#webticker").webTicker('update','<li id="itemjoe">joe</li><li  id="itemjoe2">test2</li>','swap');
+	});
+
 	$("#stop2").click(function(){
 		$("#webticker2").webTicker('stop');
 	});
@@ -34,78 +38,79 @@ $(function(){
 
 
 
-<link rel="stylesheet" type="text/css" href="./jQuery liScroll - a jQuery News Ticker_files/jquery.syntax.core.css"><link rel="stylesheet" type="text/css" href="./jQuery liScroll - a jQuery News Ticker_files/jquery.syntax.brush.html.css"><link rel="stylesheet" type="text/css" href="./jQuery liScroll - a jQuery News Ticker_files/jquery.syntax.brush.css.css"><link rel="stylesheet" type="text/css" href="./jQuery liScroll - a jQuery News Ticker_files/jquery.syntax.layout.list.css"></head>
+</head>
 <body style='margin-left:100px'>
 <h1>jQuery - webTicker v1.3 example</h1>
 <!-- first ticker -->
 <ul id="webticker" >	
-					<li >
-						My First News Item
-					</li>
-					<li >
-						My Second News Item
-					</li>
-					<li >
-						My Third News Item
-					</li>
-					<li >
-						My Fourth News Item
-					</li>
-					<li >
-						My Fifth News Item
-					</li>
-					<li >
-						My Sixth News Item
-					</li>
-					<li >
-						My Seventh News Item
-					</li>
-					<li >
-						My Eighth News Item
-					</li>
-					<li >
-						My Ninth News Item
-					</li>
-					<li >
-						My Tenth News Item
-					</li>
+	<li id='item1'>
+		My First News Item
+	</li>
+	<li id='item2'>
+		My Second News Item
+	</li>
+	<li id='item3'>
+		My Third News Item
+	</li>
+	<li id='item4'>
+		My Fourth News Item
+	</li>
+	<li id='item5'>
+		My Fifth News Item
+	</li>
+	<li id='item6'>
+		My Sixth News Item
+	</li>
+	<li id='item7'>
+		My Seventh News Item
+	</li>
+	<li id='item8'>
+		My Eighth News Item
+	</li>
+	<li id='item9'>
+		My Ninth News Item
+	</li>
+	<li id='item10'>
+		My Tenth News Item
+	</li>
 </ul>
 
 <ul id="webticker2">	
-					<li >
-						My First News Item
-					</li>
-					<li >
-						My Second News Item
-					</li>
-					<li >
-						My Third News Item
-					</li>
-					<li >
-						My Fourth News Item
-					</li>
-					<li >
-						My Fifth News Item
-					</li>
-					<li >
-						My Sixth News Item
-					</li>
-					<li >
-						My Seventh News Item
-					</li>
-					<li >
-						My Eighth News Item
-					</li>
-					<li >
-						My Ninth News Item
-					</li>
-					<li >
-						My Tenth News Item
-					</li>
+	<li id='item1'>
+		My First News Item
+	</li>
+	<!-- <li >
+		My Second News Item
+	</li>
+	<li >
+		My Third News Item
+	</li>
+	<li >
+		My Fourth News Item
+	</li>
+	<li >
+		My Fifth News Item
+	</li>
+	<li >
+		My Sixth News Item
+	</li>
+	<li >
+		My Seventh News Item
+	</li>
+	<li >
+		My Eighth News Item
+	</li>
+	<li >
+		My Ninth News Item
+	</li>
+	<li >
+		My Tenth News Item
+	</li> -->
 </ul>
 
 <button id='stop'>Stop First Ticker</button>
 <button id='continue'>Continue First Ticker</button>
+<button id='update'>Update First Ticker</button>
 <button id='stop2'>Stop Second Ticker</button>
 <button id='continue2'>Continue Second Ticker</button>
 
