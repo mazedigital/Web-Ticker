@@ -1,12 +1,12 @@
 /*!
- * webTicker 1.3
+ * webTicker 2
  * Examples and documentation at: 
- * http://jonmifsud.com
+ * http://jonmifsud.com/open-source/jquery/jquery-webticker/
  * 2011 Jonathan Mifsud
- * Version: 1.2 (26-JUNE-2011)
- * Dual licensed under the MIT and GPL licenses:
- * http://www.opensource.org/licenses/mit-license.php
- * http://www.gnu.org/licenses/gpl.html
+ * Version: 2 (17-MAR-2013)
+ * Dual licensed under the Creative Commons and DonationWare licenses:
+ * http://creativecommons.org/licenses/by-nc/3.0/
+ * hhttps://github.com/jonmifsud/Web-Ticker/blob/master/licence.md
  * Requires:
  * jQuery v1.4.2 or later
  * 
@@ -15,10 +15,10 @@
 
   var globalSettings = new Array();
 
-	function scrollnews(distance,$strip){
+	function scrollitems(distance,$strip){
 		var settings = globalSettings[$strip.attr('id')];
-		isBlank = $strip.children().first().hasClass('webticker-init');
-		timeToComplete = distance * 1000 / settings.speed;
+		var isBlank = $strip.children().first().hasClass('webticker-init');
+		var timeToComplete = distance * 1000 / settings.speed;
 		var animationSettings = {};
 		// animationSettings[settings.direction] = - distance;		
 		animationSettings[settings.direction] = $strip.css(settings.direction).replace('px','').replace('auto','0') - distance;		
@@ -30,7 +30,7 @@
 			var first = $strip.children().first();
 			var width = first.outerWidth(true);
 			$strip.css(settings.direction, '0');
-			scrollnews(width,$strip);
+			scrollitems(width,$strip);
 		});
 	}
 
@@ -59,8 +59,17 @@
 		if(stripWidth < $strip.parent().width()){
 			//if duplicate items
 			if (settings.duplicate){
-				var listItems = $strip.children().clone();
-				$strip.append(listItems);
+				//Check how many times to duplicate depending on width.
+				itemWidth = Math.max.apply(Math, $strip.children().map(function(){ return $(this).width(); }).get());
+				while (stripWidth - itemWidth < $strip.parent().width()){
+					var listItems = $strip.children().clone();
+					$strip.append(listItems);
+					stripWidth = 0;
+					$strip.children('li').each(function(){
+						stripWidth += $(this).outerWidth( true );
+					});
+					itemWidth = Math.max.apply(Math, $strip.children().map(function(){ return $(this).width(); }).get());
+				}
 			}else {
 				//if fill with empty padding
 				var emptySpace = $strip.parent().width() - stripWidth;
@@ -114,7 +123,7 @@
 
 				var first = $strip.children().first();
 				var distance = first.outerWidth(true);
-				scrollnews(distance,$strip);				
+				scrollitems(distance,$strip);				
 				$strip.hover(function(){
 					jQuery(this).stop();
 				},
@@ -127,7 +136,7 @@
 						var residualSpace;
 						if (settings.direction == 'left') residualSpace = parseInt(jQuery(this).css('left').replace('px',''))+ width;
 						else residualSpace = parseInt(jQuery(this).css('right').replace('px',''))+ width;
-						scrollnews(residualSpace,$strip);						
+						scrollitems(residualSpace,$strip);						
 					}
 				});			
 		});
@@ -149,10 +158,10 @@
 				var offset = jQuery(this).offset();
 				var first = $strip.children().first();
 				var width = first.outerWidth(true);
-				var residualSpace;
-				if (settings.direction == 'left') residualSpace = parseInt(jQuery(this).css('left').replace('px',''))+ width;
-				else residualSpace = parseInt(jQuery(this).css('right').replace('px',''))+ width;
-				scrollnews(residualSpace,$strip);
+				var distance;
+				if (settings.direction == 'left') distance = parseInt(jQuery(this).css('left').replace('px',''))+ width;
+				else distance = parseInt(jQuery(this).css('right').replace('px',''))+ width;
+				scrollitems(distance,$strip);
 			});	
 		}
 	},

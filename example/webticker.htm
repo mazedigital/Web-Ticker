@@ -4,7 +4,7 @@
 
 <meta name="description" content=" ">
 <meta name="keywords" content=" ">
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="../jquery.webticker.js"></script>
 
 
@@ -12,7 +12,7 @@
 <script type="text/javascript">
 $(function(){
 	$("#webticker").webTicker();
-	$("#webticker2").webTicker({travelocity: 0.2, direction: 'right', rssurl:'http://yourwebsite.com/rss/', rssfrequency:1});	
+	$("#webticker2").webTicker({duplicate:true, speed: 40, direction: 'right', rssurl:'http://yourwebsite.com/rss/', rssfrequency:1, startEmpty:false});	
 	
 	$("#stop").click(function(){
 		$("#webticker").webTicker('stop');
@@ -23,7 +23,7 @@ $(function(){
 	});
 
 	$("#update").click(function(){
-		$("#webticker").webTicker('update','<li id="itemjoe">joe</li><li  id="itemjoe2">test2</li>','swap');
+		$("#webticker").webTicker('update','<li id="item1">First News Item Updated</li><li id="item3">Third News Item Updated</li><li id="item4">Fourth News Item Updated</li><li id="item9">Ninth News Item Updated</li><li id="itemnew1">This is New Item 1</li><li  id="itemnew2">This is New Item 2</li><li  id="itemnew3">This is New Item 3</li><li  id="itemnew4">This is New Item 4</li>','swap');
 	});
 
 	$("#stop2").click(function(){
@@ -40,7 +40,7 @@ $(function(){
 
 </head>
 <body style='margin-left:100px'>
-<h1>jQuery - webTicker v1.3 example</h1>
+<h1>jQuery - webTicker v2 example</h1>
 <!-- first ticker -->
 <ul id="webticker" >	
 	<li id='item1'>
@@ -77,35 +77,9 @@ $(function(){
 
 <ul id="webticker2">	
 	<li id='item1'>
-		My First News Item
+		My First News Item is a very long news item and I want to know if this will keep looping
 	</li>
-	<!-- <li >
-		My Second News Item
-	</li>
-	<li >
-		My Third News Item
-	</li>
-	<li >
-		My Fourth News Item
-	</li>
-	<li >
-		My Fifth News Item
-	</li>
-	<li >
-		My Sixth News Item
-	</li>
-	<li >
-		My Seventh News Item
-	</li>
-	<li >
-		My Eighth News Item
-	</li>
-	<li >
-		My Ninth News Item
-	</li>
-	<li >
-		My Tenth News Item
-	</li> -->
+	<!-- I put some backup text in here in case RSS fails will not work unless same domain-->
 </ul>
 
 <button id='stop'>Stop First Ticker</button>
@@ -115,5 +89,15 @@ $(function(){
 <button id='continue2'>Continue Second Ticker</button>
 
 </div>
+
+<p>If you're using this ticker for commercial purposes a donation using the below button would be appreciated. Money donated via the below paypal 'buy now' button will be used soely for further development of this plugin, as well as any required support. Note that questions &amp; basic support is given in any case and I do not ask for payment however donations to reflect time saved on your end would be appreciated. The full licence is available <a href='https://github.com/jonmifsud/Web-Ticker/blob/master/licence.md'>here</a></p>
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="NYPE2HLXLCMA4">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
 
 </body></html>

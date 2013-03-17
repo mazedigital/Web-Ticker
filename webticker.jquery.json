@@ -1,7 +1,7 @@
 {
     "name": "webticker",
     "title": "jQuery WebTicker",
-    "description": "jQuery plugin to create horizontal scrolling tickers, supports both left and right scrolling as well as variable speeds. Pauses on hyperling hover and many other features.",
+    "description": "jQuery plugin to create horizontal scrolling tickers, supports both left and right scrolling as well as variable speeds. Pauses on hyperling hover and many other features. Added in version 2.0 there is support for updates & RSS Feeds",
     "keywords": [
         "ticker",
         "marquee",
@@ -10,7 +10,7 @@
         "news-ticker",
         "animation"
     ],
-    "version": "1.3.0",
+    "version": "2.0.0",
     "author": {
         "name": "Jonathan Mifsud",
         "email": "info@jonmifsud.com",
