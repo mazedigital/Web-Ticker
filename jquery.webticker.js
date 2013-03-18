@@ -1,9 +1,9 @@
 /*!
- * webTicker 2
+ * webTicker 2.0.1
  * Examples and documentation at: 
  * http://jonmifsud.com/open-source/jquery/jquery-webticker/
  * 2011 Jonathan Mifsud
- * Version: 2 (17-MAR-2013)
+ * Version: 2.0.1 (18-MAR-2013)
  * Dual licensed under the Creative Commons and DonationWare licenses:
  * http://creativecommons.org/licenses/by-nc/3.0/
  * hhttps://github.com/jonmifsud/Web-Ticker/blob/master/licence.md
@@ -56,12 +56,12 @@
 		var settings = globalSettings[$strip.attr('id')];
 		$strip.width('auto');
 		var stripWidth = $strip.width();
-		if(stripWidth < $strip.parent().width()){
+		if(stripWidth < $strip.parent().width() || $strip.children().length == 1){
 			//if duplicate items
 			if (settings.duplicate){
 				//Check how many times to duplicate depending on width.
 				itemWidth = Math.max.apply(Math, $strip.children().map(function(){ return $(this).width(); }).get());
-				while (stripWidth - itemWidth < $strip.parent().width()){
+				while (stripWidth - itemWidth < $strip.parent().width() || $strip.children().length == 1){
 					var listItems = $strip.children().clone();
 					$strip.append(listItems);
 					stripWidth = 0;
@@ -89,7 +89,20 @@
 		$strip.children('li').each(function(){
 			stripWidth += $(this).outerWidth( true );
 		});	
-		$strip.width(stripWidth+200);	
+		$strip.width(stripWidth+200);
+		widthCompare = 0;
+		$strip.children('li').each(function(){
+			widthCompare += $(this).outerWidth( true );
+		});	
+		//loop to find weather the items inside the list are actually bigger then the size of the whole list. Increments in 200px.
+		//only required when a single item is bigger then the whole list
+		while (widthCompare >= $strip.width()){
+			$strip.width($strip.width()+200);
+			widthCompare = 0;
+			$strip.children('li').each(function(){
+				widthCompare += $(this).outerWidth( true );
+			});	
+		}
 	}
 
   var methods = {

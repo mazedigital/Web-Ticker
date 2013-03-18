@@ -1,4 +1,4 @@
-#Web Ticker v2
+#Web Ticker v2.0.1
 
 ##How to use
 
