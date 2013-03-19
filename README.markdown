@@ -50,6 +50,7 @@ Below find a list of settings and the relative default values.
 	rssurl: false, //only set if you want to get data from rss
 	rssfrequency: 0, //the frequency of updates in minutes. 0 means do not refresh
 	updatetype: "reset" //how the update would occur options are "reset" or "swap"
+	hoverpause: true //pause the ticker when hovered
 
 ##CSS Requirements:
 

@@ -114,6 +114,7 @@
 			startEmpty: true,
 			duplicate: false,
 			rssurl: false,
+			hoverpause: true,
 			rssfrequency: 0,
 			updatetype: "reset"
 		}, settings);
@@ -136,22 +137,24 @@
 
 				var first = $strip.children().first();
 				var distance = first.outerWidth(true);
-				scrollitems(distance,$strip);				
-				$strip.hover(function(){
-					jQuery(this).stop();
-				},
-				function(){
-					if (globalSettings[jQuery(this).attr('id')].moving){
-						//function to start the ticker
-						var offset = jQuery(this).offset();
-						var first = $strip.children().first();
-						var width = first.outerWidth(true);
-						var residualSpace;
-						if (settings.direction == 'left') residualSpace = parseInt(jQuery(this).css('left').replace('px',''))+ width;
-						else residualSpace = parseInt(jQuery(this).css('right').replace('px',''))+ width;
-						scrollitems(residualSpace,$strip);						
-					}
-				});			
+				scrollitems(distance,$strip);
+				if (settings.hoverpause){
+					$strip.hover(function(){
+						jQuery(this).stop();
+					},
+					function(){
+						if (globalSettings[jQuery(this).attr('id')].moving){
+							//function to start the ticker
+							var offset = jQuery(this).offset();
+							var first = $strip.children().first();
+							var width = first.outerWidth(true);
+							var residualSpace;
+							if (settings.direction == 'left') residualSpace = parseInt(jQuery(this).css('left').replace('px',''))+ width;
+							else residualSpace = parseInt(jQuery(this).css('right').replace('px',''))+ width;
+							scrollitems(residualSpace,$strip);
+						}
+					});	
+				}
 		});
 	},
     stop : function( ) { 
@@ -162,7 +165,7 @@
 			});
 		}
 	},
-    cont : function( ) { // GOOD 	
+    cont : function( ) { // GOOD 
 		if (!(globalSettings[jQuery(this).attr('id')].moving)){
 			globalSettings[jQuery(this).attr('id')].moving = true;
 			var settings = globalSettings[jQuery(this).attr('id')];
