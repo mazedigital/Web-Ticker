@@ -55,7 +55,13 @@
 	function initalize($strip){
 		var settings = globalSettings[$strip.attr('id')];
 		$strip.width('auto');
-		var stripWidth = $strip.width();
+		
+		//Find the real width of all li elements
+		var stripWidth = 0;
+		$strip.children('li').each(function(){
+			stripWidth += $(this).outerWidth( true );
+		}); 
+		
 		if(stripWidth < $strip.parent().width() || $strip.children().length == 1){
 			//if duplicate items
 			if (settings.duplicate){
