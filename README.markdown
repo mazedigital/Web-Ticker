@@ -1,4 +1,4 @@
-#Web Ticker v2.0.2
+#Web Ticker v2.1.0
 
 ##How to use
 
@@ -20,14 +20,15 @@ Once started then you have the ability to 'pause' and 'continue' the ticker as r
 New in this version, the ticker now allows you to update its items without requiring it to restart.
 The update functionality supports two modes 'swap' and 'reset' which are set accordingly when the ticker is started.
 
-	$("#webticker").webTicker('update','<li id="item1">First News Item Updated</li><li id="item3">Third News Item Updated</li><li id="item4">Fourth News Item Updated</li><li id="item9">Ninth News Item Updated</li><li id="itemnew1">This is New Item 1</li><li  id="itemnew2">This is New Item 2</li><li  id="itemnew3">This is New Item 3</li><li  id="itemnew4">This is New Item 4</li>','swap');
+	$("#webticker").webTicker('update','<li data-update="item1">First News Item Updated</li><li data-update="item3">Third News Item Updated</li><li data-update="item4">Fourth News Item Updated</li><li data-update="item9">Ninth News Item Updated</li><li data-update="itemnew1">This is New Item 1</li><li  data-update="itemnew2">This is New Item 2</li><li  data-update="itemnew3">This is New Item 3</li><li  data-update="itemnew4">This is New Item 4</li>','swap',[insert],[remove]);
 
-The swap functionality uses `id` attributes to make sure there is a single unique copy in the list. 
+The swap functionality uses `data-update` attributes to identify uniquie items in the list. 
 When a node value is changed this is just 'swapped' leaving it in the same positions.
-Items not in the 'update' list are removed whilst new ones would be added at the end.
+Items not in the 'update' list are not removed whilst new ones would be added at the end. 
+This behaviour can be altered by passing the last two parameters, insert & remove. 
+A boolean value of `true` would indicate new items to be added/removed respectively.
 
 On the other-hand the `reset` just clears the list and starts afresh.
-
 
 ### Using the RSS feature
 
@@ -52,6 +53,8 @@ Below find a list of settings and the relative default values.
 	updatetype: "reset" //how the update would occur options are "reset" or "swap"
 	hoverpause: true //pause the ticker when hovered
 
+**NB:** As of version 2.1.0 ids are not required on the lists as closure is implemented making each one unique
+
 ##CSS Requirements:
 
 .tickercontainer
@@ -70,7 +73,18 @@ Below find a list of settings and the relative default values.
 
 	padding: 5px;//can be used to achieve padding within the container
 
-NB: if running multiple tickers it is suggested that you use the id rather then the class name should they have different directions and or sizes.
+### CSS3 Transition Support
+
+In version 2.1.0 css3 transition support has been added; however for this to work properly the following Rules are required
+
+ul.newsticker
+
+	-webkit-transition: all 0s linear;
+	-moz-transition: all 0s linear;
+	-o-transition: all 0s linear;
+	transition: all 0s linear;
+
+**NB:** The above rule is especially required to set all elements to support transition and have a linear effect. Changing the `easing` function might have unexpected effects. The CSS transition duration is changed dynamically by the ticker as required to provide a smooth transition.
 
 ### Optional
 
@@ -97,3 +111,22 @@ If there is something you'd like to see feel free to add a bug report or feature
 <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>
+
+<a href="http://flattr.com/thing/1357511/jQuery-Web-Ticker" target="_blank"><img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" /></a>
+
+##Change Log
+
+2.1.0
+
+ - Added CSS3 Transition Support
+ - Improved cods & closures
+ - No need to set unique IDs when running multiple tickers with different options
+ - Streamlined the update Swap Feature
+ - Added two new boolean parameters to the Update function [insert/remove]
+
+2.0.0
+
+ - Complete Rewrite and restructuring of the Ticker
+ - Added the ability to Update the ticker live
+ - Added ability to load RSS & update periodically (same domain)
+ - Breaking compatibility from 1.x

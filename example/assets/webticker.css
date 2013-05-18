@@ -41,6 +41,11 @@ height: 18px;
 overflow: hidden;
 }
 ul.newsticker { /* that's your list */
+/*Transitions have been added in order set css3 transitions; and have linear easing. Changing these lines you might have unexpected results */
+-webkit-transition: all 0s linear;
+-moz-transition: all 0s linear;
+-o-transition: all 0s linear;
+transition: all 0s linear;
 position: relative;
 margin-left: 20px;
 font: bold 10px Verdana;
