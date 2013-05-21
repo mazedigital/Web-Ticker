@@ -66,7 +66,8 @@
 		var options = animationSettings($strip);
 		var time = options.time/1000;
 		time += 's'; 
-		$strip.css(options.css).css('transition-duration',time);
+		if (time == '0s') css3Scroll($strip,'true')
+		else $strip.css(options.css).css('transition-duration',time);
 	}
 
 	function updaterss(rssurl,type,$strip){
@@ -181,6 +182,9 @@
 
 				if (cssTransitionsSupported){
 					css3Scroll($strip,false);
+					if (/Firefox/i.test(navigator.userAgent)) {
+						css3Scroll($strip,false);
+					}
 					$strip.on('transitionend webkitTransitionEnd oTransitionEnd otransitionend', function(event) {
 						if (!$strip.is(event.target)) {
 							return false;
