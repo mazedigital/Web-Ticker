@@ -49,7 +49,7 @@
 
 	function moveFirstElement($strip){
 		var settings = $strip.data('settings');
-		$strip.addClass('no-transition').css('transition-duration','0s').css(settings.direction, '0');
+		$strip.css('transition-duration','0s').css(settings.direction, '0');
 		var $first = $strip.children().first();
 		if ($first.hasClass('webticker-init'))
 			$first.remove();
@@ -66,8 +66,7 @@
 		var options = animationSettings($strip);
 		var time = options.time/1000;
 		time += 's'; 
-		if (time == '0s') css3Scroll($strip,'true')
-		else $strip.css(options.css).css('transition-duration',time);
+		$strip.css(options.css).css('transition-duration',time);
 	}
 
 	function updaterss(rssurl,type,$strip){
@@ -181,10 +180,9 @@
 				}
 
 				if (cssTransitionsSupported){
+					//fix for firefox not animating default transitions
+					$strip.css('transition-duration','0s').css(settings.direction, '0');
 					css3Scroll($strip,false);
-					if (/Firefox/i.test(navigator.userAgent)) {
-						css3Scroll($strip,false);
-					}
 					$strip.on('transitionend webkitTransitionEnd oTransitionEnd otransitionend', function(event) {
 						if (!$strip.is(event.target)) {
 							return false;
