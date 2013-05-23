@@ -1,25 +1,27 @@
 /*!
- * webTicker 2.1.0
+ * webTicker 2.1.1
  * Examples and documentation at: 
  * http://jonmifsud.com/open-source/jquery/jquery-webticker/
  * 2011 Jonathan Mifsud
- * Version: 2.1.0 (18-MAY-2013)
+ * Version: 2.1.1 (23-MAY-2013)
  * Dual licensed under the Creative Commons and DonationWare licenses:
  * http://creativecommons.org/licenses/by-nc/3.0/
- * hhttps://github.com/jonmifsud/Web-Ticker/blob/master/licence.md
+ * https://github.com/jonmifsud/Web-Ticker/blob/master/licence.md
  * Requires:
  * jQuery v1.4.2 or later
  * 
  */
 (function( $ ){
 
-	var cssTransitionsSupported = false;
+	var cssTransitionsSupported = (function() {
+	    var s = document.createElement('p').style, 
+	        v = ['ms','O','Moz','Webkit']; 
 
-	(function() {
-		var div = document.createElement('div');
-		div.setAttribute('style', 'transition:top 1s linear;-webkit-transition:top 1s linear;-moz-transition:top 1s linear;-o-transition:top 1s linear;');
-		cssTransitionsSupported = !!(div.style.transition || div.style.webkitTransition || div.style.MozTransition || div.style.OTransition);
-		delete div;
+	    if( s['transition'] == '' ) return true; 
+	    while( v.length ) 
+	        if( v.pop() + 'Transition' in s )
+	            return true;
+	    return false;
 	})();
 
 	function scrollitems($strip,moveFirst){

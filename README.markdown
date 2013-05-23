@@ -1,4 +1,4 @@
-#Web Ticker v2.1.0
+#Web Ticker v2.1.1
 
 ##How to use
 
@@ -115,6 +115,11 @@ If there is something you'd like to see feel free to add a bug report or feature
 <a href="http://flattr.com/thing/1357511/jQuery-Web-Ticker" target="_blank"><img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" /></a>
 
 ##Change Log
+
+2.1.1
+
+ - Fixed CSS3 Support for Firefox
+ - Fixed CSS3 Check function to support Fallback for IE
 
 2.1.0
 
