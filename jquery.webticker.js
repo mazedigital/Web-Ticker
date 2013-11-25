@@ -89,7 +89,13 @@
 	}
 
 	function initalize($strip){
+		if ($strip.children('li').length < 1) {
+			// console.log('no items to initialize');
+			return false;
+		}
+
 		var settings = $strip.data('settings');
+		settings.duplicateLoops = settings.duplicateLoops || 0;
 		
 		$strip.width('auto');
 		
@@ -104,7 +110,8 @@
 			if (settings.duplicate){
 				//Check how many times to duplicate depending on width.
 				itemWidth = Math.max.apply(Math, $strip.children().map(function(){ return $(this).width(); }).get());
-				while (stripWidth - itemWidth < $strip.parent().width() || $strip.children().length == 1){
+				var duplicateLoops = 0;
+				while (stripWidth - itemWidth < $strip.parent().width() || $strip.children().length == 1 || duplicateLoops < settings.duplicateLoops){
 					var listItems = $strip.children().clone();
 					$strip.append(listItems);
 					stripWidth = 0;
@@ -112,7 +119,9 @@
 						stripWidth += $(this).outerWidth( true );
 					});
 					itemWidth = Math.max.apply(Math, $strip.children().map(function(){ return $(this).width(); }).get());
+					duplicateLoops++;
 				}
+				settings.duplicateLoops = duplicateLoops;
 			}else {
 				//if fill with empty padding
 				var emptySpace = $strip.parent().width() - stripWidth;
@@ -146,6 +155,7 @@
 				widthCompare += $(this).outerWidth( true );
 			});	
 		}
+		return true;
 	}
 
   var methods = {
@@ -171,7 +181,7 @@
 				$mask.after("<span class='tickeroverlay-left'>&nbsp;</span><span class='tickeroverlay-right'>&nbsp;</span>")
 				var $tickercontainer = $strip.parent().wrap("<div class='tickercontainer'></div>");	
 				
-				initalize($strip);
+				var started = initalize($strip);
 				
 				if (settings.rssurl){
 					updaterss(settings.rssurl,settings.type,$strip);
@@ -181,10 +191,14 @@
 				}
 
 				if (cssTransitionsSupported){
-					css3Scroll($strip,false);
-					if (/Firefox/i.test(navigator.userAgent)) {
+					if (started){
+						//if list has items and set up start scrolling
 						css3Scroll($strip,false);
+						if (/Firefox/i.test(navigator.userAgent)) {
+							css3Scroll($strip,false);
+						}
 					}
+					//started or not still bind on the transition end event so it works after update
 					$strip.on('transitionend webkitTransitionEnd oTransitionEnd otransitionend', function(event) {
 						if (!$strip.is(event.target)) {
 							return false;
@@ -192,7 +206,10 @@
 						css3Scroll($(this),true);
 					});
 				} else {
-					scrollitems($(this));
+					if (started){
+						//if list has items and set up start scrolling
+						scrollitems($(this));
+					}
 				}
 
 				if (settings.hoverpause){
