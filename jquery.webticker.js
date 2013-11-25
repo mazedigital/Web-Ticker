@@ -1,25 +1,27 @@
 /*!
- * webTicker 2.1.0
+ * webTicker 2.1.1
  * Examples and documentation at: 
  * http://jonmifsud.com/open-source/jquery/jquery-webticker/
  * 2011 Jonathan Mifsud
- * Version: 2.1.0 (18-MAY-2013)
+ * Version: 2.1.1 (23-MAY-2013)
  * Dual licensed under the Creative Commons and DonationWare licenses:
  * http://creativecommons.org/licenses/by-nc/3.0/
- * hhttps://github.com/jonmifsud/Web-Ticker/blob/master/licence.md
+ * https://github.com/jonmifsud/Web-Ticker/blob/master/licence.md
  * Requires:
  * jQuery v1.4.2 or later
  * 
  */
 (function( $ ){
 
-	var cssTransitionsSupported = false;
+	var cssTransitionsSupported = (function() {
+	    var s = document.createElement('p').style, 
+	        v = ['ms','O','Moz','Webkit']; 
 
-	(function() {
-		var div = document.createElement('div');
-		div.setAttribute('style', 'transition:top 1s linear;-webkit-transition:top 1s linear;-moz-transition:top 1s linear;-o-transition:top 1s linear;');
-		cssTransitionsSupported = !!(div.style.transition || div.style.webkitTransition || div.style.MozTransition || div.style.OTransition);
-		delete div;
+	    if( s['transition'] == '' ) return true; 
+	    while( v.length ) 
+	        if( v.pop() + 'Transition' in s )
+	            return true;
+	    return false;
 	})();
 
 	function scrollitems($strip,moveFirst){
@@ -49,7 +51,7 @@
 
 	function moveFirstElement($strip){
 		var settings = $strip.data('settings');
-		$strip.addClass('no-transition').css('transition-duration','0s').css(settings.direction, '0');
+		$strip.css('transition-duration','0s').css(settings.direction, '0');
 		var $first = $strip.children().first();
 		if ($first.hasClass('webticker-init'))
 			$first.remove();
@@ -66,8 +68,7 @@
 		var options = animationSettings($strip);
 		var time = options.time/1000;
 		time += 's'; 
-		if (time == '0s') css3Scroll($strip,'true')
-		else $strip.css(options.css).css('transition-duration',time);
+		$strip.css(options.css).css('transition-duration',time);
 	}
 
 	function updaterss(rssurl,type,$strip){
@@ -191,12 +192,12 @@
 				}
 
 				if (cssTransitionsSupported){
+					//fix for firefox not animating default transitions
+					$strip.css('transition-duration','0s').css(settings.direction, '0');
+
 					if (started){
 						//if list has items and set up start scrolling
 						css3Scroll($strip,false);
-						if (/Firefox/i.test(navigator.userAgent)) {
-							css3Scroll($strip,false);
-						}
 					}
 					//started or not still bind on the transition end event so it works after update
 					$strip.on('transitionend webkitTransitionEnd oTransitionEnd otransitionend', function(event) {
