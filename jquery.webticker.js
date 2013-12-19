@@ -1,6 +1,6 @@
 /*!
  * webTicker 2.1.1
- * Examples and documentation at: 
+ * Examples and documentation at:
  * http://jonmifsud.com/open-source/jquery/jquery-webticker/
  * 2011 Jonathan Mifsud
  * Version: 2.1.1 (23-MAY-2013)
@@ -9,23 +9,23 @@
  * https://github.com/jonmifsud/Web-Ticker/blob/master/licence.md
  * Requires:
  * jQuery v1.4.2 or later
- * 
+ *
  */
 (function( $ ){
 
 	var cssTransitionsSupported = (function() {
-	    var s = document.createElement('p').style, 
-	        v = ['ms','O','Moz','Webkit']; 
+	    var s = document.createElement('p').style,
+	        v = ['ms','O','Moz','Webkit'];
 
-	    if( s['transition'] == '' ) return true; 
-	    while( v.length ) 
+	    if( s['transition'] == '' ) return true;
+	    while( v.length )
 	        if( v.pop() + 'Transition' in s )
 	            return true;
 	    return false;
 	})();
 
 	function scrollitems($strip,moveFirst){
-		var settings = $strip.data('settings');
+		var settings = $strip.data('settings') || { direction: "left" };
 		if (typeof moveFirst === 'undefined')
 			moveFirst = false;
 		if (moveFirst){
@@ -39,7 +39,7 @@
 	}
 
 	function animationSettings($strip){
-		var settings = $strip.data('settings');
+		var settings = $strip.data('settings') || { direction: "left", speed: 50 };
 		var first = $strip.children().first();
 		var distance =  Math.abs(-$strip.css(settings.direction).replace('px','').replace('auto','0') - first.outerWidth(true));
 		var settings = $strip.data('settings');
@@ -50,12 +50,12 @@
 	}
 
 	function moveFirstElement($strip){
-		var settings = $strip.data('settings');
+		var settings = $strip.data('settings') || { direction: "left" };
 		$strip.css('transition-duration','0s').css(settings.direction, '0');
 		var $first = $strip.children().first();
 		if ($first.hasClass('webticker-init'))
 			$first.remove();
-		else 
+		else
 			$strip.children().last().after($first);
 	}
 
@@ -67,7 +67,7 @@
 		}
 		var options = animationSettings($strip);
 		var time = options.time/1000;
-		time += 's'; 
+		time += 's';
 		$strip.css(options.css).css('transition-duration',time);
 	}
 
@@ -91,21 +91,23 @@
 
 	function initalize($strip){
 		if ($strip.children('li').length < 1) {
-			console.log('no items to initialize');
+			if (window.console) {
+				console.log('no items to initialize');
+			}
 			return false;
 		}
 
 		var settings = $strip.data('settings');
 		settings.duplicateLoops = settings.duplicateLoops || 0;
-		
+
 		$strip.width('auto');
-		
+
 		//Find the real width of all li elements
 		var stripWidth = 0;
 		$strip.children('li').each(function(){
 			stripWidth += $(this).outerWidth( true );
-		}); 
-		
+		});
+
 		if(stripWidth < $strip.parent().width() || $strip.children().length == 1){
 			//if duplicate items
 			if (settings.duplicate){
@@ -136,17 +138,17 @@
 			var height = $strip.find("li:first").height();
 			$strip.prepend('<li class="webticker-init" style="width:'+$strip.parent().width()+'px;height:'+height+'px;"></li>');
 		}
-		//extra width to be able to move items without any jumps	$strip.find("li:first").width()	
+		//extra width to be able to move items without any jumps	$strip.find("li:first").width()
 
 		stripWidth = 0;
 		$strip.children('li').each(function(){
 			stripWidth += $(this).outerWidth( true );
-		});	
+		});
 		$strip.width(stripWidth+200);
 		widthCompare = 0;
 		$strip.children('li').each(function(){
 			widthCompare += $(this).outerWidth( true );
-		});	
+		});
 		//loop to find weather the items inside the list are actually bigger then the size of the whole list. Increments in 200px.
 		//only required when a single item is bigger then the whole list
 		while (widthCompare >= $strip.width()){
@@ -154,13 +156,13 @@
 			widthCompare = 0;
 			$strip.children('li').each(function(){
 				widthCompare += $(this).outerWidth( true );
-			});	
+			});
 		}
 		return true;
 	}
 
   var methods = {
-    init : function( settings ) { // THIS 
+    init : function( settings ) { // THIS
 		settings = jQuery.extend({
 			speed: 50, //pixels per second
 			direction: "left",
@@ -180,10 +182,10 @@
 				$strip.addClass("newsticker");
 				var $mask = $strip.wrap("<div class='mask'></div>");
 				$mask.after("<span class='tickeroverlay-left'>&nbsp;</span><span class='tickeroverlay-right'>&nbsp;</span>")
-				var $tickercontainer = $strip.parent().wrap("<div class='tickercontainer'></div>");	
-				
+				var $tickercontainer = $strip.parent().wrap("<div class='tickercontainer'></div>");
+
 				var started = initalize($strip);
-				
+
 				if (settings.rssurl){
 					updaterss(settings.rssurl,settings.type,$strip);
 					if (settings.rssfrequency>0){
@@ -218,7 +220,7 @@
 						if (cssTransitionsSupported){
 							var currentPosition = $(this).css(settings.direction);
 							$(this).css('transition-duration','0s').css(settings.direction,currentPosition);
-						} else 
+						} else
 							jQuery(this).stop();
 					},
 					function(){
@@ -228,14 +230,14 @@
 								// $(this).css("-webkit-animation-play-state", "running");
 							} else {
 								//usual continue stuff
-								scrollitems($strip)
+								scrollitems($strip);
 							}
 						}
-					});	
+					});
 				}
 		});
 	},
-    stop : function( ) { 
+    stop : function( ) {
     	var settings = $(this).data('settings');
 		if (settings.moving){
 			settings.moving = false;
@@ -243,7 +245,7 @@
 				if (cssTransitionsSupported){
 					var currentPosition = $(this).css(settings.direction);
 					$(this).css('transition-duration','0s').css(settings.direction,currentPosition);
-				} else 
+				} else
 					$(this).stop();
 			});
 		}
@@ -258,10 +260,10 @@
 				} else {
 					scrollitems($(this));
 				}
-			});	
+			});
 		}
 	},
-	update : function( list, type, insert, remove) { 
+	update : function( list, type, insert, remove) {
 		type = type || "reset";
 		if (typeof insert === 'undefined')
 			insert = true;
@@ -279,7 +281,9 @@
 			$strip.css(settings.direction, '0');
 			initalize($strip);
 		} else if (type == 'swap'){
-			console.log('trying to update');
+			if (window.console) {
+				console.log('trying to update');
+			}
 			if ($strip.children('li').length < 1){
 				//there were no items treat as if new
 				$strip.html(list);
@@ -309,17 +313,17 @@
 				stripWidth = 0;
 				$strip.children('li').each(function(){
 					stripWidth += $(this).outerWidth( true );
-				});	
+				});
 				$strip.width(stripWidth+200);
 			}
 		}
-		
+
 		$strip.webTicker('cont');
 	}
   };
 
   $.fn.webTicker = function( method ) {
-    
+
     // Method calling logic
     if ( methods[method] ) {
       return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
@@ -327,8 +331,8 @@
       return methods.init.apply( this, arguments );
     } else {
       $.error( 'Method ' +  method + ' does not exist on jQuery.webTicker' );
-    }    
-  
+    }
+
   };
 
 })( jQuery );
