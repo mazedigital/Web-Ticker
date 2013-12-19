@@ -91,7 +91,7 @@
 
 	function initalize($strip){
 		if ($strip.children('li').length < 1) {
-			// console.log('no items to initialize');
+			console.log('no items to initialize');
 			return false;
 		}
 
@@ -279,31 +279,39 @@
 			$strip.css(settings.direction, '0');
 			initalize($strip);
 		} else if (type == 'swap'){
-			// should the update be a 'hot-swap' or use replacement for IDs (in which case remove new ones)
-			$strip.children('li').addClass('old');
-			for (var i = 0; i < list.length; i++) {
-				id = $(list[i]).data('update');
-				match = $strip.find('[data-update="'+id+'"]');//should try find the id or data-attribute.
-				if (match.length < 1){
-					if (insert){
-						//we need to move this item into the dom
-						if ($strip.find('.ticker-spacer:first-child').length == 0 && $strip.find('.ticker-spacer').length > 0){
-							$strip.children('li.ticker-spacer').before(list[i]);
+			console.log('trying to update');
+			if ($strip.children('li').length < 1){
+				//there were no items treat as if new
+				$strip.html(list);
+				$strip.css(settings.direction, '0');
+				initalize($strip);
+			} else {
+				// should the update be a 'hot-swap' or use replacement for IDs (in which case remove new ones)
+				$strip.children('li').addClass('old');
+				for (var i = 0; i < list.length; i++) {
+					id = $(list[i]).data('update');
+					match = $strip.find('[data-update="'+id+'"]');//should try find the id or data-attribute.
+					if (match.length < 1){
+						if (insert){
+							//we need to move this item into the dom
+							if ($strip.find('.ticker-spacer:first-child').length == 0 && $strip.find('.ticker-spacer').length > 0){
+								$strip.children('li.ticker-spacer').before(list[i]);
+							}
+							else {
+								$strip.append(list[i]);
+							}
 						}
-						else {
-							$strip.append(list[i]);
-						}
-					}
-				} else $strip.find('[data-update="'+id+'"]').replaceWith(list[i]);;
-			};
-			$strip.children('li.webticker-init, li.ticker-spacer').removeClass('old');
-			if (remove)
-				$strip.children('li').remove('.old');
-			stripWidth = 0;
-			$strip.children('li').each(function(){
-				stripWidth += $(this).outerWidth( true );
-			});	
-			$strip.width(stripWidth+200);
+					} else $strip.find('[data-update="'+id+'"]').replaceWith(list[i]);;
+				};
+				$strip.children('li.webticker-init, li.ticker-spacer').removeClass('old');
+				if (remove)
+					$strip.children('li').remove('.old');
+				stripWidth = 0;
+				$strip.children('li').each(function(){
+					stripWidth += $(this).outerWidth( true );
+				});	
+				$strip.width(stripWidth+200);
+			}
 		}
 		
 		$strip.webTicker('cont');
