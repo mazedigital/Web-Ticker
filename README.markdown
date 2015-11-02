@@ -22,10 +22,10 @@ The update functionality supports two modes 'swap' and 'reset' which are set acc
 
 	$("#webticker").webTicker('update','<li data-update="item1">First News Item Updated</li><li data-update="item3">Third News Item Updated</li><li data-update="item4">Fourth News Item Updated</li><li data-update="item9">Ninth News Item Updated</li><li data-update="itemnew1">This is New Item 1</li><li  data-update="itemnew2">This is New Item 2</li><li  data-update="itemnew3">This is New Item 3</li><li  data-update="itemnew4">This is New Item 4</li>','swap',[insert],[remove]);
 
-The swap functionality uses `data-update` attributes to identify uniquie items in the list. 
+The swap functionality uses `data-update` attributes to identify uniquie items in the list.
 When a node value is changed this is just 'swapped' leaving it in the same positions.
-Items not in the 'update' list are not removed whilst new ones would be added at the end. 
-This behaviour can be altered by passing the last two parameters, insert & remove. 
+Items not in the 'update' list are not removed whilst new ones would be added at the end.
+This behaviour can be altered by passing the last two parameters, insert & remove.
 A boolean value of `true` would indicate new items to be added/removed respectively.
 
 On the other-hand the `reset` just clears the list and starts afresh.
@@ -37,6 +37,19 @@ Rss Feeds are now automatically supported by the ticker; note that as per javasc
 	$("#webticker").webTicker({rssurl:'http://yourwebsite.com/rss/', rssfrequency:5});
 
 The above command will automatically pull up the RSS feed from your website & update every 5 minutes.
+
+Provide an optional dateformatter function to parse and format pubDate strings.  These will be shown in a
+<span class='pubdate'>...</span> tag.  If not provided, dates won't be shown.
+
+Item categories will be used to add category-* classes to each item. For example, an RSS item with a
+"Top Stories" category label will be marked with <li class="category-top-stories"> ... </li>.
+
+The example in example/rss.html requires npm's [corsproxy](https://www.npmjs.com/package/corsproxy) to proxy the RSS feed data locally.  First install and run it:
+
+	npm install -g corsproxy
+	corsproxy
+
+and then open example/rss.html in your browser.
 
 
 ## Settings - Optional
@@ -50,6 +63,7 @@ Below find a list of settings and the relative default values.
 	duplicate: false, //if there is less items then visible on the ticker you can duplicate the items to make it continuous
 	rssurl: false, //only set if you want to get data from rss
 	rssfrequency: 0, //the frequency of updates in minutes. 0 means do not refresh
+	dateformatter: function(s) { return new Date(s).toString(); }  // format pubDate strings
 	updatetype: "reset" //how the update would occur options are "reset" or "swap"
 	hoverpause: true //pause the ticker when hovered
 
@@ -90,7 +104,7 @@ ul.newsticker
 
 .tickeroverlay-left , .tickeroverlay-right
 
-	background-image:...//can both be used to achieve a fade-in and fade-out effect 
+	background-image:...//can both be used to achieve a fade-in and fade-out effect
 
 ## Licence
 

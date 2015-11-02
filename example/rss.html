@@ -40,11 +40,14 @@ margin: 0;
 padding: 0 7px;
 box-sizing:border-box;
 }
-.hhmm {
+.newsticker .pubdate {
     color: #666;
     font-weight: bold;
     padding-right: 0.5em;
     font-size: 80%;
+}
+li.category-top-stories {
+  font-weight: bold;
 }
 
 </style>
@@ -61,8 +64,9 @@ $("#webticker").webTicker({
     moving: true, //weather to start the ticker in a moving or static position
     startEmpty: true, //weather to start with an empty or pre-filled ticker
     duplicate: false, //if there is less items then visible on the ticker you can duplicate the items to make it continuous
-    rssurl: "http://localhost:1337/feeds.bbci.co.uk/news/rss.xml?edition=int", //only set if you want to get data from rss
+    rssurl: "http://localhost:1337/news.google.com/news?pz=1&cf=all&ned=us&hl=en&output=rss", //only set if you want to get data from rss
     rssfrequency: 1, //the frequency of updates in minutes. 0 means do not refresh
+    dateformatter: function(dt) { return new Date(dt).toString() },
     updatetype: "swap" //how the update would occur options are "reset" or "swap"
 });
   </script>
