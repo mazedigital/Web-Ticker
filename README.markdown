@@ -39,10 +39,10 @@ Rss Feeds are now automatically supported by the ticker; note that as per javasc
 The above command will automatically pull up the RSS feed from your website & update every 5 minutes.
 
 Provide an optional dateformatter function to parse and format pubDate strings.  These will be shown in a
-<span class='pubdate'>...</span> tag.  If not provided, dates won't be shown.
+`<span class='pubdate'>...</span>` tag.  If not provided, dates won't be shown.
 
 Item categories will be used to add category-* classes to each item. For example, an RSS item with a
-"Top Stories" category label will be marked with <li class="category-top-stories"> ... </li>.
+"Top Stories" category label will be marked with `<li class="category-top-stories"> ... </li>`.
 
 The example in example/rss.html requires npm's [corsproxy](https://www.npmjs.com/package/corsproxy) to proxy the RSS feed data locally.  First install and run it:
 
