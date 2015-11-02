@@ -74,7 +74,7 @@
 	function updaterss(rssurl,type,$strip){
 		var list = [];
 		$.get(rssurl, function(data) {
-		    var $xml = $(data);
+		    var $xml = $($.parseXML(data));
 		    $xml.find("item").each(function() {
 		        var $this = $(this),
 		            item = {
