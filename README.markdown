@@ -46,8 +46,8 @@ Below find a list of settings and the relative default values.
 
 	speed: 50, //pixels per second
 	direction: "left", //if to move left or right
-	moving: true, //weather to start the ticker in a moving or static position
-	startEmpty: true, //weather to start with an empty or full ticker
+	moving: true, //whether to start the ticker in a moving or static position
+	startEmpty: true, //whether to start with an empty or full ticker
 	duplicate: false, //if there is less items then visible on the ticker you can duplicate the items to make it continuous
 	rssurl: false, //only set if you want to get data from rss
 	rssfrequency: 0, //the frequency of updates in minutes. 0 means do not refresh
@@ -96,7 +96,7 @@ ul.newsticker
 ## Licence
 
 This software is free for Personal use however Donations would be appreciated in Commercial Applications where the developer or owner is to make financial benefit.
-Donations are not requied and I will not check weather someone 'paid' the donation or no, however it would be appreciated if you find the ticker useful to your needs.
+Donations are not requied and I will not check whether someone 'paid' the donation or no, however it would be appreciated if you find the ticker useful to your needs.
 
 The (full dual-licence is available to read here)[https://github.com/jonmifsud/Web-Ticker/blob/master/licence.md]
 
