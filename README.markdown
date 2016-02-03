@@ -27,6 +27,7 @@ When a node value is changed this is just 'swapped' leaving it in the same posit
 Items not in the 'update' list are not removed whilst new ones would be added at the end. 
 This behaviour can be altered by passing the last two parameters, insert & remove. 
 A boolean value of `true` would indicate new items to be added/removed respectively.
+The default values for 'insert' is `true` whilst 'remove' is `false`.
 
 On the other-hand the `reset` just clears the list and starts afresh.
 
