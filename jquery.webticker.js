@@ -71,7 +71,7 @@
 		$strip.css(options.css).css('transition-duration',time);
 	}
 
-	function updaterss(rssurl,type,$strip){
+	function updaterss(rssurl,type,dateformatter,$strip){
 		var list = [];
 		$.get(rssurl, function(data) {
 		    var $xml = $(data);
@@ -79,14 +79,29 @@
 		        var $this = $(this),
 		            item = {
 		                title: $this.find("title").text(),
-		                link: $this.find("link").text()
-		        }
-		        listItem = "<li><a href='"+item.link+"'>"+item.title+"</a></li>";
+		                link: $this.find("link").text(),
+		                pubDate: $this.find("pubDate").text(),
+		                categories: $this.find("category").map(function(i, c) {
+						    return 'category-' + c.textContent.replace(/[^a-z0-9]/g, function(s) {
+						        var c = s.charCodeAt(0);
+						        if (c == 32) return '-';
+						        if (c >= 65 && c <= 90) return s.toLowerCase();
+						        return '_';
+						    });
+						}).get()
+	                };
+		        listItem = "<li "
+		        	// possibly insert categories as class tags
+		        	+ (item.categories ? "class='" + item.categories.join(' ') + "'" : "")
+		        	+ ">"
+		        	// possibly insert formatted date
+		        	+ ((dateformatter && item.pubDate) ? "<span class='pubdate'>" + dateformatter(item.pubDate) + "</span>" : "")
+		        	+ "<a href='"+item.link+"'>"+item.title+"</a></li>";
 		        list += listItem;
 		        //Do something with item here...
 		    });
 			$strip.webTicker('update', list, type);
-		});
+		}, "xml");
 	}
 
 	function initalize($strip){
@@ -187,9 +202,9 @@
 				var started = initalize($strip);
 
 				if (settings.rssurl){
-					updaterss(settings.rssurl,settings.type,$strip);
+					updaterss(settings.rssurl,settings.updatetype,settings.dateformatter,$strip);
 					if (settings.rssfrequency>0){
-						window.setInterval(function(){updaterss(settings.rssurl,settings.type,$strip);},settings.rssfrequency*1000*60);
+						window.setInterval(function(){updaterss(settings.rssurl,settings.updatetype,settings.dateformatter,$strip);},settings.rssfrequency*1000*60);
 					}
 				}
 
