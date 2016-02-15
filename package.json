@@ -1,0 +1,31 @@
+{
+  "name": "webticker",
+  "version": "2.2.0",
+  "description": "##How to use",
+  "main": "gulpfile.js",
+  "directories": {
+    "example": "example"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-jshint": "^2.0.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.5.2",
+    "jshint": "^2.9.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonmifsud/Web-Ticker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonmifsud/Web-Ticker/issues"
+  },
+  "homepage": "https://github.com/jonmifsud/Web-Ticker#readme"
+}

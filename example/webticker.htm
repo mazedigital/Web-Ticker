@@ -7,10 +7,10 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script type="text/javascript" src="../jquery.webticker.js"></script>
 
-<link rel="stylesheet" href="assets/webticker.css" type="text/css" media="screen"> 
+<link rel="stylesheet" href="assets/css/webticker.css" type="text/css" media="screen"> 
 <script type="text/javascript">
 $(function(){
-	$("#webticker").webTicker({startEmpty:true, duplicate:true, transition: "linear", 'speed': 100, fadeleft: 'assets/left.png',faderight: 'assets/right.png'});
+	$("#webticker").webTicker({startEmpty:true, duplicate:false, transition: "linear", 'speed': 100, maskleft: 'assets/images/left.png',maskright: 'assets/images/right.png', maskwidth:'150px'});
 	$("#webticker2").webTicker({duplicate:true, moving:true, speed: 40, direction: 'right', rssurl:false, rssfrequency:0, startEmpty:false, hoverpause:false, transition: "ease"});	
 	
 	$("#stop").click(function(){
@@ -22,7 +22,7 @@ $(function(){
 	});
 
 	$("#update").click(function(){
-		$("#webticker").webTicker('update','<li data-update="item1"> New Item One </li> <li data-update="item2"> New Two </li> <li data-update="item3"> Three </li>','swap',true,false);
+		$("#webticker").webTicker('update','<li data-update="item1"> New Item One </li> <li data-update="item2"> New Two </li> <li data-update="item3"> Three </li><li data-update="item4"> Four </li>','swap',true,false);
 	});
 
 	$("#stop2").click(function(){
