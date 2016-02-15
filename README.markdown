@@ -104,6 +104,8 @@ If there is something you'd like to see feel free to add a bug report or feature
 
 ##Change Log
 
+2.2.0
+
  - Added two new functionalities
 	1. Ability to choose between Ease or Linear transitions
 	2. The ticker can now use masks (to make text fade from the sides)
