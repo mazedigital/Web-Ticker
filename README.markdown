@@ -77,7 +77,7 @@ Below find a list of settings and the relative default values.
 ### Optional
 
 	.tickercontainer { 
-	background: #999; /* Sets the background colour of the ticker */
+		background: #999; /* Sets the background colour of the ticker */
 	}
 
 ## Licence

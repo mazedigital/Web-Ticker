@@ -10,11 +10,7 @@ gulp.task('default', function() {
 
 
 gulp.task('scripts', function() {
-  // var s = scripts({});
-  // s.on('error',function(e){
-  //   gutil.log(e);
-  //   s.end();
-  // });
+
   return gulp.src([
       'jquery.webticker.js'
       ])
