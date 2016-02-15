@@ -22,7 +22,7 @@ gulp.task('scripts', function() {
     .pipe(jshint.reporter('default'))
     .pipe(rename({suffix: '.min'}))
     .pipe(uglify()).on('error', errorHandler)
-    .pipe(gulp.dest('assets/js'))
+    .pipe(gulp.dest('example/assets/js'))
     .pipe(notify({ message: 'Scripts task complete' }));
 });
 
