@@ -76,9 +76,9 @@ Below find a list of settings and the relative default values.
 
 ### Optional
 
-.tickercontainer { 
+	.tickercontainer { 
 	background: #999; /* Sets the background colour of the ticker */
-}
+	}
 
 ## Licence
 
@@ -106,7 +106,7 @@ If there is something you'd like to see feel free to add a bug report or feature
 
  - Added two new functionalities
 	1. Ability to choose between Ease or Linear transitions
-	2. The ticker now can use masks (to make text fade from the sides)
+	2. The ticker can now use masks (to make text fade from the sides)
  - Injected required CSS rules in JS file
  - Fixed bug when updating with multiple new <li> items - only the last new item was being added
  - Fixed bug when adding a new <li> item in non-duplicate setting - ordering was not being handled well
