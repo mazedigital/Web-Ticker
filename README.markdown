@@ -22,10 +22,10 @@ The update functionality supports two modes 'swap' and 'reset' which are set acc
 
 	$("#webticker").webTicker('update','<li data-update="item1">First News Item Updated</li><li data-update="item3">Third News Item Updated</li><li data-update="item4">Fourth News Item Updated</li><li data-update="item9">Ninth News Item Updated</li><li data-update="itemnew1">This is New Item 1</li><li  data-update="itemnew2">This is New Item 2</li><li  data-update="itemnew3">This is New Item 3</li><li  data-update="itemnew4">This is New Item 4</li>','swap',[insert],[remove]);
 
-The swap functionality uses `data-update` attributes to identify uniquie items in the list. 
+The swap functionality uses `data-update` attributes to identify uniquie items in the list.
 When a node value is changed this is just 'swapped' leaving it in the same positions.
-Items not in the 'update' list are not removed whilst new ones would be added at the end. 
-This behaviour can be altered by passing the last two parameters, insert & remove. 
+Items not in the 'update' list are not removed whilst new ones would be added at the end.
+This behaviour can be altered by passing the last two parameters, insert & remove.
 A boolean value of `true` would indicate new items to be added/removed respectively.
 The default values for 'insert' is `true` whilst 'remove' is `false`.
 
@@ -91,14 +91,14 @@ ul.newsticker
 
 .tickeroverlay-left , .tickeroverlay-right
 
-	background-image:...//can both be used to achieve a fade-in and fade-out effect 
+	background-image:...//can both be used to achieve a fade-in and fade-out effect
 
 ## Licence
 
 This software is free for Personal use however Donations would be appreciated in Commercial Applications where the developer or owner is to make financial benefit.
 Donations are not requied and I will not check whether someone 'paid' the donation or no, however it would be appreciated if you find the ticker useful to your needs.
 
-The (full dual-licence is available to read here)[https://github.com/jonmifsud/Web-Ticker/blob/master/licence.md]
+The [full dual-licence is available to read here](https://github.com/jonmifsud/Web-Ticker/blob/master/licence.md)
 
 -------------
 
