@@ -1,7 +1,7 @@
 {
     "name": "webticker",
     "title": "jQuery WebTicker",
-    "description": "jQuery plugin to create horizontal scrolling tickers, supports both left and right scrolling as well as variable speeds. Pauses on hyperling hover and many other features. Added in version 2.0 there is support for updates & RSS Feeds. Version 2.1.0 Adds support for CSS3 Transitions making the webticker smoother on modern browsers.",
+    "description": "jQuery plugin to create horizontal scrolling tickers, supports both left and right scrolling as well as variable speeds. Pauses on hover and many other features. Version 3 adds support for a separate commercial license and improved documentation.",
     "keywords": [
         "ticker",
         "marquee",
@@ -10,33 +10,33 @@
         "news-ticker",
         "animation"
     ],
-    "version": "2.1.1",
+    "version": "3.0.0",
     "author": {
         "name": "Jonathan Mifsud",
-        "email": "info@jonmifsud.com",
-        "url": "http://jonmifsud.com"
+        "email": "jon@maze.digital",
+        "url": "http://maze.digital"
     },
     "maintainers": [
         {
             "name": "Jonathan Mifsud",
-            "email": "info@jonmifsud.com",
-            "url": "http://jonmifsud.com"
+            "email": "jon@maze.digital",
+            "url": "http://maze.digital"
         }
     ],
     "licenses": [
         {
-            "type": "Creative Commons Attribution-NonCommercial 3.0 Unported License",
-            "url": "http://creativecommons.org/licenses/by-nc/3.0/"
+            "type": "GNU General Public License v3 (GPLv3)",
+            "url": "https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3)#summary"
         },
         {
-            "type": "DonationWare",
-            "url": "https://github.com/jonmifsud/Web-Ticker/blob/master/licence.md"
+            "type": "Commercial License",
+            "url": "https://maze.digital/webticker/license/"
         }
     ],
-    "bugs": "https://github.com/jonmifsud/Web-Ticker/issues",
-    "homepage": "http://jonmifsud.com/open-source/jquery/jquery-webticker/",
-    "docs": "http://jonmifsud.com/open-source/jquery/jquery-webticker/",
-    "download": "http://jonmifsud.com/open-source/jquery/jquery-webticker/",
+    "bugs": "https://github.com/mazedigital/Web-Ticker/issues",
+    "homepage": "https://maze.digital/webticker/",
+    "docs": "https://maze.digital/webticker/",
+    "download": "https://maze.digital/webticker/",
     "dependencies": {
         "jquery": ">=1.7"
     }
