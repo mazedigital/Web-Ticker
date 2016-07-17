@@ -1,3 +1,10 @@
+---
+handle: change-log
+canonical: https://maze.digital/webticker/change-log/
+title: Web Ticker Change Log | The development path of Web Ticker
+description: The jQuery Web Ticker has developed over time, this change log keeps track of the most important changes you need to note before upgrading.
+---
+
 ##Change Log
 
 3.0.0
@@ -9,6 +16,8 @@
  - Fixed bug when updating the list with shorter content than the original - duplication only filled the row partially
  - Fixed bug when resizing - width of the ticker was not being updated
  - Fixed bug when having a very long `<li>` item crashed the ticker - when trying to compare width of items to width of the ticker
+ - Change of Licenses - now features GPLv3, Commercial & OEM Licenses
+ - Added substantial documentation, and migrated repository to Maze Digital
 
 2.1.1
 

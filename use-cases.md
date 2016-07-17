@@ -1,10 +1,16 @@
-#Web Ticker v2.2.0
+---
+handle: use-cases
+canonical: https://maze.digital/webticker/use-cases/
+title: News Ticker, Stock Ticker & Image Ticker with jQuery Web Ticker
+description: A list of possible use cases of how you can use the jQuery Web Ticker, from news tickers to stock tickers, to image tickers.
+---
 
-##Examples
+
+##Use Cases
 
 Below are examples of different uses for the web ticker.
 
-### Example 1: News {#news}
+### Use Case 1: News Ticker {#news}
 
 News changes fairly frequently, at times you may want to offer byte-sized headlines going across your website for your customers to knwo what is going on. The continous functionality of the WebTicker with the option to pause on hover is great to allow your users to interact with this content. Most importantly, all the items can be in themselves links, taking your users to the relevant articles.
 
@@ -16,9 +22,9 @@ News changes fairly frequently, at times you may want to offer byte-sized headli
 	</ul>
 </div>
 
-### Example 2: Finance {#finance}
+### Use Case 2: Stock Ticker {#finance}
 
-Tick rates change and update all the time, Web Ticker is a great way to show updated pricing to your clients. Through the update facility you can update the ticks as frequently as you want. Note example below does not contain real data but is rather used to show a possible concept use.
+Tick rates change and update all the time, Web Ticker is a great way to show updated pricing to your clients. Through the update facility you can update the ticks as frequently as you want. Note example below does not contain real data but is rather used to show a possible concept use. Other than stock ticker, this is also found as *live rates ticker*, *forex ticker* and *market ticker* amongst other variations, particularly as it's used to represent changing values in the market. Company symbold represented in the ticker are usually referred to as ticker symbols.
 
 <div class="ticker-wrapper">
 	<ul id="finance-webticker" >
@@ -33,7 +39,7 @@ Tick rates change and update all the time, Web Ticker is a great way to show upd
 	</ul>
 </div>
 
-### Example 3: Images {#images}
+### Use Case 3: Image Ticker {#images}
 
 Do you work with a lot of great companies? Maybe you've been featured in too many places, WebTicker can also be used to showcase images. We've seen it used to highlight partners as well as to showcase photo galleries in a snapshot.
 

@@ -1,3 +1,11 @@
+---
+handle: license
+canonical: https://maze.digital/webticker/license/
+title: Web Ticker License | Open Source, Commercial & OEM
+description: Looking to use Web Ticker on your projects? This page will guide you through the available licenses, from open source to commercial and OEM licences.
+---
+
+
 ## Licence
 
 WebTicker has three kinds of licenses: open-source, commercial, and OEM.

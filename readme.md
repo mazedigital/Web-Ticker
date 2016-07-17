@@ -1,8 +1,17 @@
+---
+canonical: https://maze.digital/webticker/
+license: https://maze.digital/webticker/license/
+use-cases: https://maze.digital/webticker/use-cases/
+examples: https://maze.digital/webticker/examples/
+faq: https://maze.digital/webticker/faq/
+change-log: https://maze.digital/webticker/change-log/
+---
+
 #Web Ticker v3.0.0
 
 ##Web Ticker - what is it for?
 
-Web Ticker is a jQuery plugin that allows you to have items scrolling indefinetely across the screen. It uses some fancy calculations to ensure smooth continous transitions. The Web Ticker content, can be varied, including text, image lists or even custom styled items. The Web Ticker API can also be used to control the scrolling, and content programatically.
+Web Ticker is a jQuery plugin that allows you to have items scrolling indefinitely across the screen. It uses some fancy calculations to ensure smooth continuous transitions. The Web Ticker content, can be varied, including text, image lists or even custom styled items. The Web Ticker API can also be used to control the scrolling, and content programatically.
 
 ##Install & Configure
 
@@ -15,7 +24,11 @@ Continue reading for step by step instructions.
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
-2. Download the standalone <a href="https://raw.githubusercontent.com/mazedigital/Web-Ticker/master/jquery.webticker.min.js" target='blank'>jquery.webticker.min.js</a> and include it like this:
+2. Download the standalone <a href="https://raw.githubusercontent.com/mazedigital/Web-Ticker/master/jquery.webticker.min.js" target='blank'>jquery.webticker.min.js</a> or install via npm
+
+		npm install webticker
+
+	and include it like this:
 
 		<script src="./path/to/jquery.webticker.min.js"></script>
 

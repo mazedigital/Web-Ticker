@@ -1,10 +1,15 @@
-#Web Ticker v2.2.0
+---
+handle: examples
+canonical: https://maze.digital/webticker/examples/
+title: Web Ticker Examples | Using the various webticker options
+description: A guide showing how you update existing ticker data, stopping the animations, using different ease functions or setting up your ticker with images.
+---
 
 ##Examples
 
 Below are examples of different methods that can be used with the web ticker.
 
-### Example 1: Updating the Ticker {#update}
+### Example 1: Updating the Ticker Content {#update}
 
 <div class="ticker-wrapper">
 	<ul id="webticker-update-example" >
@@ -56,7 +61,7 @@ $("#update-newsticker1").click(function(){
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 
 
-### Example 2: Stop/Continue Ticker {#stop-cont}
+### Example 2: Stop/Continue Ticker Scrolling {#stop-cont}
 
 <div class="ticker-wrapper">
 	<ul id="webticker-stop-continue-example" >
@@ -102,7 +107,7 @@ $("#continue-newsticker2").click(function(){
 });
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 
-### Example 3: Changing Transitions {#transitions}
+### Example 3: Transition Easing {#transitions}
 
 <div class="ticker-wrapper">
 	<ul id="webticker-transition-ease" >

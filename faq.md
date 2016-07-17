@@ -1,3 +1,10 @@
+---
+handle: faq
+canonical: https://maze.digital/webticker/faq/
+title: Frequently Asked Questions for JQuery Web Ticker
+description: Most commonly raised issues about the jQuery web ticker answered. Having issues, read this first.
+---
+
 ##FAQ
 
 **I would like to use the Web Ticker on my website, which license is applicable?**
