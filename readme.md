@@ -103,7 +103,7 @@ The final mark up would look something like the below:
 Elements Explained:
 
 | Class  | Description |
-|:-------:|-------------|---------|
+|:-------:|-------------|
 | tickercontainer   | wraps the ticker, setting the height and width. |
 | mask   | primarily used when masking/overlays are required, is another `container` wrapper |
 | ticker-spacer   | Used when there is not sufficient space to fill the ticker with items (white space) |
