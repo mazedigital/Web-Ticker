@@ -7,15 +7,15 @@ faq: https://maze.digital/webticker/faq/
 change-log: https://maze.digital/webticker/change-log/
 ---
 
-#Web Ticker v3.0.0
+# Web Ticker v3.0.0
 
-##Web Ticker - what is it for?
+## Web Ticker - what is it for?
 
 Web Ticker is a jQuery plugin that allows you to have items scrolling indefinitely across the screen. It uses some fancy calculations to ensure smooth continuous transitions. The Web Ticker content, can be varied, including text, image lists or even custom styled items. The Web Ticker API can also be used to control the scrolling, and content programatically.
 
-##Install & Configure
+## Install & Configure
 
-###Installation
+### Installation
 
 All you should need to do is look at a few of our simple examples to get started.
 Continue reading for step by step instructions.
@@ -46,7 +46,7 @@ Continue reading for step by step instructions.
 
 WebTicker is now activated on the list with id 'webTicker'.
 
-###Settings {#settings}
+### Settings {#settings}
 
 When initializing the web ticker you may pass parameters to modify the settings of the web ticker. This is completely optional and used to meet your specific needs.
 
@@ -67,7 +67,7 @@ When initializing the web ticker you may pass parameters to modify the settings 
 | maskwidth  | Defines the width of the Mask (used for fade-in and fade-out) | 0 |
 
 
-###Methods {#methods}
+### Methods {#methods}
 
 Methods can be called using javaScript on the element of the web ticker. The below table illustrates the available methods.
 
@@ -79,11 +79,11 @@ Methods can be called using javaScript on the element of the web ticker. The bel
 | transition  | Defines which of the transitions to use. The available transisions are 'linear', which scrolls at a normal and steady speed, and 'ease' which slows down as an item exits the edge of the ticker border. | <a href="/webticker/examples/#finance">Transition Example</a> |
 
 
-###Styling {#styling}
+### Styling {#styling}
 
 Styling the WebTicker is pretty much up to you as a developer, however the WebTicker does alter the dom slightly, and 
 
-###Markup Explained {#markup-explained}
+### Markup Explained {#markup-explained}
 
 The final mark up would look something like the below:
 
