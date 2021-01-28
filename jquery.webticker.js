@@ -209,14 +209,6 @@
 				var $mask = $strip.wrap('<div class="mask"></div>');
 				$mask.after('<span class="tickeroverlay-left">&nbsp;</span><span class="tickeroverlay-right">&nbsp;</span>');
 				var $tickercontainer = $strip.parent().wrap('<div class="tickercontainer"></div>');
-				var resizeEvt; 
-				$(window).resize(function() {
-					clearTimeout(resizeEvt);
-					resizeEvt = setTimeout(function() {
-							console.log('window was resized');
-							initialize($strip,false);
-					}, 500);
-				});
 
 				//adding required css rules
 				
